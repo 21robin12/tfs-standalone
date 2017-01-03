@@ -1,0 +1,36 @@
+{
+  "projectCollections": [
+    {
+      "name": "My Project Collection (only one project collection currently supported)",
+      "url": "https://mycustomurl.visualstudio.com/DefaultCollection",
+      "username": "me@me.co.uk",
+	  "altCredentials": {
+		"username": "me@me.co.uk",
+		"password": "pa$$"
+	  },
+      "projects": [
+        {
+		  "id": "709ADCD6-1A66-4F91-805C-85E048C3C90D",
+          "name": "My Project (only one project currently supported)",
+          "developerCmdPath": "C:\\Program Files (x86)\\Microsoft Visual Studio 14.0\\VC\\vcvarsall.bat",
+		  "workspacePath": "C:\\_TFS\\MyProject",
+		  "branchComparisons": [
+            {
+              "from": "$/MyProject/dev",
+              "to": "$/MyProject/main"
+            },
+			{
+              "from": "$/MyProject/main",
+              "to": "$/MyProject/release"
+            }
+          ],
+          "ignoredChangesets": [
+            1,
+			7,
+			11
+          ]
+        }
+      ]
+    }
+  ]
+}

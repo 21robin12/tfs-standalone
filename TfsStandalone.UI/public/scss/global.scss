@@ -1,0 +1,21 @@
+﻿// global styles
+@import '_base';
+
+// utilities
+@import 'utilities/_reset';
+@import 'utilities/_bem';
+@import 'utilities/_border-box-grid';
+@import 'utilities/_fonts';
+@import 'utilities/_mixins.scss';
+@import 'utilities/_animations.scss';
+
+// modules
+@import 'modules/_navigation.scss';
+@import 'modules/_scrollbar.scss';
+@import 'modules/_tables.scss';
+@import 'modules/_buttons.scss';
+@import 'modules/_forms.scss';
+
+// templates
+@import 'templates/_layout.scss';
+@import 'templates/_diff-viewer.scss';

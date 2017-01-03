@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="../dist/css/global.css" />
+</head>
+<body>
+    <div class="primary-nav">
+        <div class="primary-nav__item" title="Merge"><i class="fa fa-compress fa-2x"></i></div>
+        <div class="primary-nav__item--active" title="Shelveset diff"><i class="fa fa-files-o fa-2x"></i></div>
+    </div>
+
+    <div class="one-column">
+        <table>
+            <thead>
+            <tr>
+                <th colspan="2" class="cell--heading">
+                    <select class="select--left">
+                        <option>my-shelveset1</option>
+                        <option>my-shelveset2</option>
+                    </select>
+                    <button class="btn--primary right">Reload</button>
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td class="cell--selectable">robinherd.com\node_modules\gulp\index.js</td>
+            </tr>
+            <tr>
+                <td class="cell--selectable selected">robinherd.com\node_modules\gulp\index.js</td>
+            </tr>
+            <tr>
+                <td class="cell--selectable">robinherd.com\node_modules\gulp\index.js</td>
+            </tr>
+            <tr>
+                <td class="cell--selectable">robinherd.com\node_modules\gulp\index.js</td>
+            </tr>
+                <tr>
+                    <td class="cell--selectable">robinherd.com\node_modules\gulp\index.js</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <table>
+            <thead>
+                <tr>
+                    <th colspan="2" class="cell--heading">
+                        Diff
+                    </th>
+                </tr>
+            </thead>
+            <tbody class="code">
+            <tr>
+                <td colspan="2" class="first-row"></td>
+            </tr>
+            <tr>
+                <td class="line-number">1</td>
+                <td class="diff">words go here</td>
+            </tr>
+            <tr>
+                <td class="line-number">2</td>
+                <td class="diff insert">       words go here</td>
+            </tr>
+            <tr>
+                <td class="line-number">3</td>
+                <td class="diff delete">   words go here</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

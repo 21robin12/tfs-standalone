@@ -1,0 +1,33 @@
+﻿/// <reference path="../_base.scss" />
+
+@include block("code") {
+    font-family: "Lucida Console", Monaco, monospace;
+    td {
+        padding: 0;
+
+        &.first-row {
+            height: 10px;
+            width: 100%;
+        }
+
+        &.line-number {
+            width:20px;
+            padding-right: $gutter-width;
+        }
+
+        &.diff {
+            white-space: pre-wrap;
+            width: 100%;
+
+            &.insert {
+                color: $green;
+                background: lighten($grey-dark, 3);
+            }
+
+            &.delete {
+                color: $red;
+                background: lighten($grey-dark, 3);
+            }
+        }
+    }
+}

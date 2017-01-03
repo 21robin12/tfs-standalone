@@ -1,0 +1,70 @@
+﻿/// <reference path="../_base.scss" />
+
+$table-padding: 10px;
+
+.table-wrapper {
+    position: relative;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: $gutter-width;
+
+    tr {
+       @include fade-in;
+
+        border-width: 1px 0;
+
+        td {
+            padding: $table-padding;
+        }
+
+        &:first-child {
+            border-top: none;
+        }
+
+        &:last-child {
+            border-bottom: none;
+        }
+    }
+}
+
+@include block("cell") {
+    .left {
+        float: left;
+    }
+
+    @include modifier("align-left") {
+        text-align: left;
+    }
+
+    @include modifier("centered") {
+        text-align: center;
+    }
+
+    @include modifier("heading") {
+        $padding: $gutter-width / 2;
+        $height: 54px - ($padding * 2); // nasty hack to ensure all headings are same height
+
+        background: $grey-subtle;
+        border-radius: $border-radius;
+        padding: $padding;
+        height: $height;
+        line-height: $height;
+    }
+
+    @include modifier("selectable") {
+        cursor: pointer;
+        color: $blue;
+
+        &:hover {
+            text-decoration: underline;
+        }
+
+        &.selected {
+            cursor: default;
+            text-decoration: underline;
+        }
+    }
+}

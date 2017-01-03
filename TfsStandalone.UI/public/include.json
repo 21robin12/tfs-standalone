@@ -1,0 +1,10 @@
+﻿{
+    "files": [
+      "js/lib/knockout-3.4.0.min.js",
+      "js/lib/jquery-3.1.1.min.js",
+      "js/custom/Ajax.js",
+      "js/custom/UnmergedChangesetsViewModel.js",
+      "js/custom/ShelvesetDiffViewModel.js",
+      "js/custom/MainViewModel.js"
+    ]
+}

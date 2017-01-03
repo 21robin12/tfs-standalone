@@ -1,0 +1,68 @@
+﻿/// <reference path="../_base.scss" />
+
+@include block("btn") {
+    @include noselect;
+
+    font-family: $font-standard;
+    background: transparent;
+    border-radius: $border-radius;
+    border-width: 1px;
+    border-style: solid;
+    padding: 8px 16px;
+
+    &:focus {
+        outline: none;
+    }
+
+    &.right {
+        float: right;
+    }
+
+    &:hover {
+        color: white;
+        cursor: pointer;
+    }
+
+    &.btn-loading {
+        @include loading-background;
+        color: transparent;
+        border-color: $grey-light;
+
+        &:hover {
+            color: transparent;
+            @include loading-background;
+            cursor: default;
+            background-color: transparent;
+        }
+    }
+
+    @include modifier("primary") {
+        color: $blue;
+        border-color: $blue;
+
+        &:hover {
+            background: $blue;
+        }
+    }
+    
+    @include modifier("disabled") {
+        color: grey;
+        border-color: grey;
+        cursor: default;
+
+        &:hover {
+            cursor: default;
+            color: grey;
+            background: transparent;
+        }
+    }
+
+    @include modifier("warning") {
+        border-color: $orange;
+        color: $orange;
+
+        &:hover {
+            background: $orange;
+        }
+    }
+}

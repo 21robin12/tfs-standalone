@@ -1,0 +1,40 @@
+/// <reference path="../_base.scss" />
+
+@mixin text-off-screen {
+    text-indent: -999em;
+}
+
+@mixin el-off-screen {
+    position: absolute;
+    left: -999em;
+}
+
+@mixin clearfix {
+    &:after {
+        clear: both;
+        content: "";
+        display: table;
+    }
+}
+
+@mixin bp($point) {
+    @media (max-width: $point) {
+        @content;
+    }
+}
+
+@mixin noselect {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+@mixin loading-background {
+    background-image: url("../../images/loading-white.svg");
+    background-repeat: no-repeat;
+    background-size: 30px 30px;
+    background-position: center center;
+}

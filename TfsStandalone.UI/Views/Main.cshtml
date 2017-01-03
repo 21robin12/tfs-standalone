@@ -1,0 +1,23 @@
+﻿@inherits RazorEngine.Templating.TemplateBase<TfsStandalone.UI.Models.Pages.MainViewModel>
+@{
+    Layout = "Views/Shared/_Layout.cshtml";
+}
+
+<div id="main">
+    <div class="primary-nav" data-bind="foreach: navItems">
+        <div data-bind="css: css, attr: { title: title }, click: $parent.selectNavItem"><i data-bind="css: iconCss"></i></div>
+    </div>
+
+    <div data-bind="visible: unmergedChangesetsNavItem().isActive(), with: unmergedChangesetsViewModel">
+        @Include("Views/Partials/_UnmergedChangesets.cshtml")
+    </div>
+
+    <div data-bind="visible: shelvesetDiffNavItem().isActive(), with: shelvesetDiffViewModel">
+        @Include("Views/Partials/_ShelvesetDiff.cshtml")
+    </div>
+</div>
+
+<script>
+    var viewModel = new MainViewModel();
+    ko.applyBindings(viewModel, document.getElementById("main"));
+</script>

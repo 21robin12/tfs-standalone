@@ -1,0 +1,31 @@
+﻿/// <reference path="../_base.scss" />
+
+html, body {
+    background: $grey-dark;
+    font-family: $font-standard;
+    color: $grey-light;
+    font-weight: lighter;
+}
+
+@include block("one-column") {
+    height: 100%;
+    margin-left: $nav-width + $gutter-width;
+    margin-right: $gutter-width;
+}
+
+.loading {
+    position: absolute;
+    z-index: 999;
+    margin: auto;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: rgba(0,0,0,0.2);
+    background-image: url("../../images/loading.svg");
+    background-repeat: no-repeat;
+    background-size: 60px 60px;
+    background-position: center center;
+    width:100%;
+    height: 100%;
+}

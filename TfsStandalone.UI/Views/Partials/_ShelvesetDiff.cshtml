@@ -1,0 +1,49 @@
+﻿<div class="one-column">
+    <div class="table-wrapper">
+        <div class="loading" data-bind="visible: isLoading"></div>
+        <table>
+            <thead>
+                <tr>
+                    <th colspan="1" class="cell--heading">
+                        <button class="btn--primary right" data-bind="click: loadShelvesets">Reload shelvesets</button>
+                        <select class="select--left" data-bind="event: { change: shelvesetChanged }">
+                            <option value="null">Select a shelveset...</option>
+                            <!-- ko foreach: shelvesets -->
+                            <option data-bind="attr: { value: $data }, text: $data"></option>
+                            <!-- /ko -->
+                        </select>
+                    </th>
+                </tr>
+            </thead>
+            <tbody data-bind="foreach: files">
+                <tr>
+                    <td class="cell--selectable" data-bind="text: filename, click: viewDiff, css: { selected: selected }"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="table-wrapper">
+        <div class="loading" data-bind="visible: isLoading"></div>
+        <table data-bind="visible: diffLines() && diffLines().length > 0">
+            <thead>
+                <tr>
+                    <th colspan="2" class="cell--heading">
+                        Diff
+                    </th>
+                </tr>
+            </thead>
+            <tbody class="code">
+                <tr>
+                    <td colspan="2" class="first-row"></td>
+                </tr>
+                <!-- ko foreach: diffLines -->
+                <tr>
+                    <td class="line-number" data-bind="text: lineNumber"></td>
+                    <td class="diff" data-bind="text: text, css: { insert: diffType === 1, delete: diffType === 2 }"></td>
+                </tr>
+                <!-- /ko -->
+            </tbody>
+        </table>
+    </div>
+</div>

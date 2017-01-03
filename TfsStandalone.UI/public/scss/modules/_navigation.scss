@@ -1,0 +1,35 @@
+﻿/// <reference path="../_base.scss" />
+
+@include block("primary-nav", "primary navigation block") {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: $nav-width;
+    height: 100%;
+    background: $grey-subtle;
+
+    @include element("item") {
+        $padding-top: 24px;
+
+        width: 100%;
+        height: $nav-width - $padding-top;
+        color: $grey-light;
+        //border-bottom: 1px solid $grey-dark;
+        text-align: center;
+        padding-top: $padding-top;
+
+        @include modifier("active") {
+            background:$grey-dark;
+
+            &:hover {
+                cursor: auto !important;
+                background: $grey-dark !important;
+            }
+        }
+
+        &:hover {
+            cursor: pointer;
+            background: $grey-mid;
+        }
+    }
+}

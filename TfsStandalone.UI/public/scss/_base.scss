@@ -1,0 +1,18 @@
+﻿// colors
+$blue: #2DB3E5;
+$orange: #FF4E29; 
+$red: #E22D2D;
+$green: #2CE02C;
+
+$grey-light: #cfd2da; // TODO rename greys to e.g. 1,2,3,4
+$grey-mid: rgb(67, 72, 87);
+$grey-dark: #252830;
+$grey-subtle: darken($grey-mid, 6);
+
+// fonts
+$font-standard: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+// spacing
+$nav-width: 80px;
+$gutter-width: 20px;
+$border-radius: 4px;

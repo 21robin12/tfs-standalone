@@ -1,0 +1,40 @@
+/// <reference path="../_base.scss" />
+
+@mixin col($i: 12) {
+    float: left;
+    padding: 0 $gutter-width / 2;
+    width: percentage($i / 12);
+}
+
+@mixin gutterless-col($i: 12) {
+    float: left;
+    width: percentage($i / 12);
+}
+
+@mixin no-col {
+    clear: both;
+    float: none;
+  margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+@mixin alpha-col($i: 12) {
+    float: left;
+    padding-right: $gutter-width / 2;
+    width: percentage($i / 12);
+}
+
+@mixin omega-col($i: 12) {
+    float: left;
+    padding-left: $gutter-width / 2;
+    width: percentage($i / 12);
+}
+
+@mixin push($columns: 1, $parent-columns: 12) {
+    margin-left: percentage($columns / $parent-columns);
+}
+
+@mixin pull($columns: 1, $parent-columns: 12) {
+    margin-right: percentage($columns / $parent-columns);
+}
