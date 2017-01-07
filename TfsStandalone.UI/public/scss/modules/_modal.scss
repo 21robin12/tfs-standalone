@@ -1,5 +1,54 @@
 ﻿/// <reference path="../_base.scss" />
 
 @include block("modal") {
-    
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+
+    @include element("box") {
+        padding: $gutter-width;
+        border-radius: $border-radius;
+        max-width: 400px;
+        margin: 0 auto;
+        margin-top: 50px;
+        background: $blue;
+    }
+
+    @include element("heading") {
+        width: 100%;
+        display:block;
+        font-size: $font-size-standard * 2;
+    }
+
+    @include element("text-input") {
+        background: transparent;
+        border: 1px solid $grey-light;
+        border-radius: $border-radius;
+        font-size: $font-size-standard;
+        font-family: $font-standard;
+        color: white;
+        font-weight: 100;
+        padding: 10px 5px;
+        width: 100%;
+        margin-top: $gutter-width;
+    }
+
+    @include element("submit") {
+        margin-top: $gutter-width;
+        font-size: $font-size-standard;
+        font-family: $font-standard;
+        color: white;
+        font-weight: 100;
+        width: 100%;
+        padding: 10px 5px;
+        background: $grey-mid;
+        border-radius: $border-radius;
+        border: 1px solid $grey-dark;
+    }
 }
