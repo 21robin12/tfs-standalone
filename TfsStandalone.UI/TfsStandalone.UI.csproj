@@ -52,6 +52,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Mvc, Version=4.0.0.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
@@ -86,6 +87,8 @@
     <Compile Include="Controllers\UnmergedChangesetsController.cs" />
     <Compile Include="Infrastructure\ConfigManager.cs" />
     <Compile Include="Infrastructure\Extensions\TaskExtensions.cs" />
+    <Compile Include="Infrastructure\Security\CredentialsManager.cs" />
+    <Compile Include="Infrastructure\Security\UserPass.cs" />
     <Compile Include="Models\Blocks\UnmergedChangeset.cs" />
     <Compile Include="Models\Pages\BaseViewModel.cs" />
     <Compile Include="Models\Pages\MainViewModel.cs" />
@@ -94,6 +97,7 @@
     <Content Include="icon-small.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="public\html\modal.html" />
     <Content Include="public\images\loading-white.svg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -130,6 +134,7 @@
     </Compile>
     <None Include="public\package.json" />
     <None Include="public\scss\global.scss" />
+    <None Include="public\scss\modules\_modal.scss" />
     <None Include="public\scss\modules\_navigation.scss" />
     <None Include="public\scss\modules\_scrollbar.scss" />
     <None Include="public\scss\modules\_buttons.scss" />
@@ -156,6 +161,7 @@
     <None Include="Views\Shared\_Layout.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="_forms.scss" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

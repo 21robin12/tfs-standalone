@@ -1,0 +1,22 @@
+﻿/// <reference path="../_base.scss" />
+
+@include block("select") {
+    font-family: $font-standard;
+    background: transparent;
+    color: $blue;
+    border: 1px solid $blue;
+    border-radius: $border-radius;
+    padding: 7px 16px;
+
+    &:focus {
+        outline: none;
+    }
+
+    option {
+        background: $grey-dark;
+    }
+
+    @include modifier("left") {
+        float: left;
+    }
+}
