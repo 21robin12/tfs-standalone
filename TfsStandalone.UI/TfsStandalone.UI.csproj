@@ -162,7 +162,6 @@
     <None Include="Views\Shared\_Layout.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="_forms.scss" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
