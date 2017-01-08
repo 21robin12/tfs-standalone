@@ -1,5 +1,32 @@
 ﻿/// <reference path="../_base.scss" />
 
+@include block("form-wrapper") {
+    padding: $gutter-width;
+    border-radius: $border-radius;
+    width: 100%;
+    background: $grey-mid;
+    margin-top: $gutter-width;
+
+    @include element("row") {
+        @include clearfix;
+        margin-bottom: $gutter-width;
+
+        @include modifier("last") {
+            margin: 0;
+        }
+    }
+
+    @include element("left") {
+        width: 40%;
+        float: left;
+    }
+
+    @include element("right") {
+        width: 60%;
+        float: right;
+    }
+}
+
 @include block("select") {
     font-family: $font-standard;
     background: transparent;
@@ -18,5 +45,56 @@
 
     @include modifier("left") {
         float: left;
+    }
+}
+
+@mixin textbox {
+    background: $grey-subtle;
+    border: none;
+    border-radius: $border-radius;
+    font-size: $font-size-standard;
+    font-family: $font-standard;
+    color: white;
+    font-weight: 100;
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+
+    &::-webkit-input-placeholder {
+        color: lighten($grey-mid, 15);
+    }
+}
+
+input[type="text"], 
+input[type="password"] {
+    @include textbox;
+}
+
+textarea {
+    @include textbox;
+    resize: vertical;
+    min-height: 80px;
+}
+
+label {
+    padding: 10px;
+    width: 100%;
+    display: block;
+}
+
+button[type="submit"] {
+    font-size: $font-size-standard;
+    font-family: $font-standard;
+    color: white;
+    font-weight: 100;
+    width: 100%;
+    padding: 10px;
+    background: $blue;
+    border-radius: $border-radius;
+    border: none;
+
+    &:hover {
+        cursor: pointer;
+        background: darken($blue, 10);
     }
 }

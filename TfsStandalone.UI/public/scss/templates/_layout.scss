@@ -11,7 +11,13 @@ html, body {
     height: 100%;
     margin-left: $nav-width + $gutter-width;
     margin-right: $gutter-width;
+
+    @include element("narrow") {
+        margin: 0 auto;
+        max-width: 800px;
+    }
 }
+
 
 .loading {
     position: absolute;
