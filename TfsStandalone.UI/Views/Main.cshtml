@@ -25,7 +25,7 @@
         @Include("Views/Partials/_ShelvesetDiff.cshtml")
     </div>
 
-    <div data-bind="visible: settingsNavItem().isActive()">
+    <div data-bind="visible: settingsNavItem().isActive(), with: settingsViewModel">
         @Include("Views/Partials/_Settings.cshtml")
     </div>
 </div>

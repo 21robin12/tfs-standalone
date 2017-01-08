@@ -3,10 +3,10 @@
         <div class="form-wrapper">
             <div class="form-wrapper__row">
                 <div class="form-wrapper__left">
-                    <label for="project-collection-url">Project collection URL</label>
+                    <label for="project-collection-url">Project Collection URL</label>
                 </div>
                 <div class="form-wrapper__right">
-                    <input type="text" placeholder="E.g. https://mycustomurl.visualstudio.com/DefaultCollection" id="project-collection-url" />
+                    <input type="text" placeholder="E.g. https://mycustomurl.visualstudio.com/DefaultCollection" id="project-collection-url" data-bind="value: projectCollectionUrl"/>
                 </div>
             </div>
             <div class="form-wrapper__row">
@@ -14,7 +14,7 @@
                     <label for="username">Username</label>
                 </div>
                 <div class="form-wrapper__right">
-                    <input type="text" placeholder="E.g. me.me@email.com" id="username" />
+                    <input type="text" placeholder="E.g. me.me@email.com" id="username" data-bind="value: username"/>
                 </div>
             </div>
             <div class="form-wrapper__row">
@@ -22,7 +22,7 @@
                     <label for="workspace-path">Workspace path</label>
                 </div>
                 <div class="form-wrapper__right">
-                    <input type="text" placeholder="E.g. C:\_TFS\MyProject" id="workspace-path" />
+                    <input type="text" placeholder="E.g. C:\_TFS\MyProject" id="workspace-path" data-bind="value: workspacePath"/>
                 </div>
             </div>
             <div class="form-wrapper__row">
@@ -30,7 +30,7 @@
                     <label for="developer-cmd-path">Path to developer cmd</label>
                 </div>
                 <div class="form-wrapper__right">
-                    <input type="text" placeholder="Path to vcvarsall.bat" id="developer-cmd-path" />
+                    <input type="text" placeholder="Path to vcvarsall.bat" id="developer-cmd-path" data-bind="value: developerCmdPath"/>
                 </div>
             </div>
             <div class="form-wrapper__row">
@@ -38,7 +38,7 @@
                     <label for="branch-comparisons">Branch comparisons</label>
                 </div>
                 <div class="form-wrapper__right">
-                    <textarea placeholder="[$/MyProject/dev,$/MyProject/main][$/MyProject/main,$/MyProject/release]" id="branch-comparisons"></textarea>
+                    <textarea placeholder="[$/MyProject/dev,$/MyProject/main][$/MyProject/main,$/MyProject/release]" id="branch-comparisons" data-bind="value: branchComparisons"></textarea>
                 </div>
             </div>
             <div class="form-wrapper__row">
@@ -46,7 +46,7 @@
                     <label for="ignored-changesets">Changesets to ignore</label>
                 </div>
                 <div class="form-wrapper__right">
-                    <textarea placeholder="127,182,184,195" id="ignored-changesets"></textarea>
+                    <textarea placeholder="127,182,184,195" id="ignored-changesets" data-bind="value: changesetsToIgnore"></textarea>
                 </div>
             </div>
             <div class="form-wrapper__row--last">

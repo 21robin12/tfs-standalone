@@ -26,6 +26,7 @@ function MainViewModel() {
     self.shelvesetDiffViewModel = null;
     self.shelvesetDiffNavItem = ko.observable(null);
 
+    self.settingsViewModel = null;
     self.settingsNavItem = ko.observable(null);
 
     self.init = function () {
@@ -48,6 +49,7 @@ function MainViewModel() {
             self.shelvesetDiffNavItem
         ]);
 
+        self.settingsViewModel = new SettingsViewModel();
         self.settingsNavItem(new NavItemViewModel({
             icon: "fa-cog",
             title: "Settings",
