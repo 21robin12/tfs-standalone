@@ -98,6 +98,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="public\html\modal.html" />
+    <Content Include="public\html\settings.html" />
     <Content Include="public\images\loading-white.svg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
