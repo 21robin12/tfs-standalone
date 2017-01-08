@@ -17,14 +17,14 @@
 
                 if (_config == null)
                 {
-                    var configPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "config.json");
+                    var configPath = ConfigPath();
                     if (!File.Exists(configPath))
                     {
                         throw new FileNotFoundException($"No config file found at {configPath}");
                     }
 
-                    var file = File.ReadAllText(configPath);
-                    _config = JsonConvert.DeserializeObject<TfsStandaloneConfig>(file);
+                    var text = File.ReadAllText(configPath);
+                    _config = JsonConvert.DeserializeObject<TfsStandaloneConfig>(text);
                 }
 
                 return _config;
@@ -44,6 +44,17 @@
         public static TfsProjectCollection ProjectCollection(TfsProject project)
         {
             return Config.ProjectCollections.FirstOrDefault(x => x.Projects.Any(y => y.Id == project.Id));
+        }
+
+        public static void SaveConfig(TfsStandaloneConfig config)
+        {
+            var text = JsonConvert.SerializeObject(config);
+            File.WriteAllText(ConfigPath(), text);
+        }
+
+        private static string ConfigPath()
+        {
+            return Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "config.json");
         }
     }
 }

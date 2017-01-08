@@ -81,6 +81,7 @@
       <DependentUpon>BrowserForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Controllers\MainController.cs" />
+    <Compile Include="Controllers\SettingsController.cs" />
     <Compile Include="Controllers\ShelvesetDiffController.cs" />
     <Compile Include="CustomCefSettings.cs" />
     <Compile Include="Controllers\Controller.cs" />
