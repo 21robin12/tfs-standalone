@@ -18,12 +18,15 @@ function MainViewModel() {
     var self = this;
 
     self.navItems = ko.observableArray();
+    self.lowerNavItems = ko.observableArray();
 
     self.unmergedChangesetsViewModel = null;
     self.unmergedChangesetsNavItem = ko.observable(null);
 
     self.shelvesetDiffViewModel = null;
     self.shelvesetDiffNavItem = ko.observable(null);
+
+    self.settingsNavItem = ko.observable(null);
 
     self.init = function () {
         self.unmergedChangesetsViewModel = new UnmergedChangesetsViewModel();
@@ -44,10 +47,20 @@ function MainViewModel() {
             self.unmergedChangesetsNavItem,
             self.shelvesetDiffNavItem
         ]);
+
+        self.settingsNavItem(new NavItemViewModel({
+            icon: "fa-cog",
+            title: "Settings",
+            isActive: false
+        }));
+
+        self.lowerNavItems([
+            self.settingsNavItem
+        ]);
     };
 
     self.selectNavItem = function (navItem) {
-        var activeItem = ko.utils.arrayFirst(self.navItems(), function (item) {
+        var activeItem = ko.utils.arrayFirst(self.navItems().concat(self.lowerNavItems()), function (item) {
             return item().isActive() === true;
         });
 

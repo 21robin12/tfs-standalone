@@ -4,8 +4,17 @@
 }
 
 <div id="main">
-    <div class="primary-nav" data-bind="foreach: navItems">
-        <div data-bind="css: css, attr: { title: title }, click: $parent.selectNavItem"><i data-bind="css: iconCss"></i></div>
+    <div class="primary-nav">
+        <div data-bind="foreach: navItems">
+            <div data-bind="css: css, attr: { title: title }, click: $parent.selectNavItem">
+                <i data-bind="css: iconCss"></i>
+            </div>
+        </div>
+        <div class="primary-nav__lower" data-bind="foreach: lowerNavItems">
+            <div data-bind="css: css, attr: { title: title }, click: $parent.selectNavItem">
+                <i data-bind="css: iconCss"></i>
+            </div>
+        </div>
     </div>
 
     <div data-bind="visible: unmergedChangesetsNavItem().isActive(), with: unmergedChangesetsViewModel">
@@ -14,6 +23,10 @@
 
     <div data-bind="visible: shelvesetDiffNavItem().isActive(), with: shelvesetDiffViewModel">
         @Include("Views/Partials/_ShelvesetDiff.cshtml")
+    </div>
+
+    <div data-bind="visible: settingsNavItem().isActive()">
+        @Include("Views/Partials/_Settings.cshtml")
     </div>
 </div>
 

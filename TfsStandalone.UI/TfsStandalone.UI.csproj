@@ -153,6 +153,9 @@
     <None Include="Views\Main.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="Views\Partials\_Settings.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Views\Partials\_ShelvesetDiff.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

@@ -48,6 +48,7 @@ namespace TfsStandalone.UI
                 "Views/Shared/_Layout.cshtml",
                 "Views/Partials/_ShelvesetDiff.cshtml",
                 "Views/Partials/_UnmergedChangesets.cshtml",
+                "Views/Partials/_Settings.cshtml"
             };
 
             foreach (var t in templates)

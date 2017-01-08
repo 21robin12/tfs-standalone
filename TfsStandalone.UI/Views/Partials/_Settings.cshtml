@@ -1,0 +1,59 @@
+﻿<div class="one-column">
+    <div class="one-column__narrow">
+        <div class="form-wrapper">
+            <div class="form-wrapper__row">
+                <div class="form-wrapper__left">
+                    <label for="project-collection-url">Project collection URL</label>
+                </div>
+                <div class="form-wrapper__right">
+                    <input type="text" placeholder="E.g. https://mycustomurl.visualstudio.com/DefaultCollection" id="project-collection-url" />
+                </div>
+            </div>
+            <div class="form-wrapper__row">
+                <div class="form-wrapper__left">
+                    <label for="username">Username</label>
+                </div>
+                <div class="form-wrapper__right">
+                    <input type="text" placeholder="E.g. me.me@email.com" id="username" />
+                </div>
+            </div>
+            <div class="form-wrapper__row">
+                <div class="form-wrapper__left">
+                    <label for="workspace-path">Workspace path</label>
+                </div>
+                <div class="form-wrapper__right">
+                    <input type="text" placeholder="E.g. C:\_TFS\MyProject" id="workspace-path" />
+                </div>
+            </div>
+            <div class="form-wrapper__row">
+                <div class="form-wrapper__left">
+                    <label for="developer-cmd-path">Path to developer cmd</label>
+                </div>
+                <div class="form-wrapper__right">
+                    <input type="text" placeholder="Path to vcvarsall.bat" id="developer-cmd-path" />
+                </div>
+            </div>
+            <div class="form-wrapper__row">
+                <div class="form-wrapper__left">
+                    <label for="branch-comparisons">Branch comparisons</label>
+                </div>
+                <div class="form-wrapper__right">
+                    <textarea placeholder="[$/MyProject/dev,$/MyProject/main][$/MyProject/main,$/MyProject/release]" id="branch-comparisons"></textarea>
+                </div>
+            </div>
+            <div class="form-wrapper__row">
+                <div class="form-wrapper__left">
+                    <label for="ignored-changesets">Changesets to ignore</label>
+                </div>
+                <div class="form-wrapper__right">
+                    <textarea placeholder="127,182,184,195" id="ignored-changesets"></textarea>
+                </div>
+            </div>
+            <div class="form-wrapper__row--last">
+                <div class="form-wrapper__right">
+                    <button type="submit">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
