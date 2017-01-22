@@ -95,6 +95,7 @@
     <Compile Include="Models\Pages\MainViewModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Content Include="public\html\authenticating.html" />
     <Content Include="public\js\custom\SettingsViewModel.js" />
     <Content Include="icon-small.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
