@@ -2,13 +2,19 @@
 
 namespace TfsStandalone.UI.Controllers
 {
+    using System;
     using Infrastructure;
+    using Microsoft.VisualStudio.Services.Client;
+    using Microsoft.VisualStudio.Services.Common;
     using Service;
 
     public class MainController : Controller
     {
         public void Main()
         {
+            // TODO remove this? forces entering TFS credentials on startup
+            ClearCachedTfsCredentials();
+
             var vm = new MainViewModel();
             vm.ProjectCollection = ConfigManager.ProjectCollection(0);
             Render(vm, "Views/Main.cshtml");
@@ -25,6 +31,14 @@ namespace TfsStandalone.UI.Controllers
         private void Render<T>(T model, string view)
         {
             BrowserForm.Instance.Render(model, view);
+        }
+
+        private void ClearCachedTfsCredentials()
+        {
+            var clientCredentails = new VssClientCredentialStorage();
+            var tfsUri = new Uri(ConfigManager.ProjectCollection(0).Url);
+            var federatedCredentials = clientCredentails.RetrieveToken(tfsUri, VssCredentialsType.Federated);
+            clientCredentails.RemoveToken(tfsUri, federatedCredentials);
         }
     }
 }
