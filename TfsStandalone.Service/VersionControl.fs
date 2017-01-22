@@ -5,14 +5,15 @@ open System.Net
 open Microsoft.TeamFoundation.VersionControl.Client
 open System.Collections.Generic
 
-let GetVersionControlServer (tfsUrl, altUsername, altPassword): VersionControlServer =
+let GetVersionControlServer (tfsUrl): VersionControlServer =
+    // TODO no need for this now; remove
     let stringToOption s =
         match s with
             | null | "" -> None
             | _ -> Some s
 
-    let username = stringToOption altUsername
-    let password = stringToOption altPassword
+    let username = stringToOption null
+    let password = stringToOption null
 
     let getTeamProjectCollectionAltCreds () =
         let netCred = NetworkCredential(username.Value, password.Value)

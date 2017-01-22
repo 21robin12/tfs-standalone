@@ -4,34 +4,34 @@ open System
 open System.IO
 open Microsoft.TeamFoundation.VersionControl.Client
 
-let private GetPendingChanges(shelvesetName, projectCollectionUrl, username, altUsername, altPassword) =
-    let vcs = VersionControl.GetVersionControlServer (projectCollectionUrl, altUsername, altPassword)
+let private GetPendingChanges(shelvesetName, projectCollectionUrl, username) =
+    let vcs = VersionControl.GetVersionControlServer (projectCollectionUrl)
     let shelveset = vcs.QueryShelvesets(shelvesetName, username).[0]
     let change = vcs.QueryShelvedChanges(shelveset).[0]
     let pending = change.PendingChanges;
     pending
         |> List.ofArray
 
-let private HasChanged (shelvesetFile: PendingChange, projectCollectionUrl, username, altUsername, altPassword) =
+let private HasChanged (shelvesetFile: PendingChange, projectCollectionUrl, username) =
     let stream = shelvesetFile.DownloadShelvedFile()
     use reader = new StreamReader(stream)
     let shelvesetText = reader.ReadToEnd()
 
     let machineName = Environment.MachineName
-    let vcs = VersionControl.GetVersionControlServer (projectCollectionUrl, altUsername, altPassword) // TODO remove this & elsewhere
+    let vcs = VersionControl.GetVersionControlServer (projectCollectionUrl) // TODO remove this & elsewhere
     let workspace = vcs.GetWorkspace(machineName, username);
     let localFile = workspace.GetLocalItemForServerItem(shelvesetFile.ServerItem)
     let localText = File.ReadAllText(localFile)
     shelvesetText <> localText
 
-let GetShelvesetFilenames(projectCollectionUrl, username, altUsername, altPassword, shelvesetName) =
-    let pending = GetPendingChanges(shelvesetName, projectCollectionUrl, username, altUsername, altPassword)
+let GetShelvesetFilenames(projectCollectionUrl, username, shelvesetName) =
+    let pending = GetPendingChanges(shelvesetName, projectCollectionUrl, username)
     pending
-        |> List.filter (fun x -> HasChanged(x, projectCollectionUrl, username, altUsername, altPassword)) // TODO check this doesn't take ages!
+        |> List.filter (fun x -> HasChanged(x, projectCollectionUrl, username)) // TODO check this doesn't take ages!
         |> List.map (fun x -> x.ServerItem)    
 
-let GetShelvesets (projectCollectionUrl, username, altUsername, altPassword) =
-    let vcs = VersionControl.GetVersionControlServer (projectCollectionUrl, altUsername, altPassword)
+let GetShelvesets (projectCollectionUrl, username) =
+    let vcs = VersionControl.GetVersionControlServer (projectCollectionUrl)
     let shelvesets = vcs.QueryShelvesets(null, username)
     shelvesets
         |> List.ofSeq
@@ -39,15 +39,15 @@ let GetShelvesets (projectCollectionUrl, username, altUsername, altPassword) =
         |> List.map (fun x -> x.Name)
         |> Seq.ofList
 
-let Diff(projectCollectionUrl, username, altUsername, altPassword, shelvesetName, serverItem) =
-    let pending = GetPendingChanges(shelvesetName, projectCollectionUrl, username, altUsername, altPassword)
+let Diff(projectCollectionUrl, username, shelvesetName, serverItem) =
+    let pending = GetPendingChanges(shelvesetName, projectCollectionUrl, username)
     let shelvesetFile = List.find (fun (item:PendingChange) -> item.ServerItem = serverItem) pending
     let stream = shelvesetFile.DownloadShelvedFile()
     use reader = new StreamReader(stream)
     let shelvesetText = reader.ReadToEnd()
 
     let machineName = Environment.MachineName
-    let vcs = VersionControl.GetVersionControlServer (projectCollectionUrl, altUsername, altPassword) // TODO remove this & elsewhere
+    let vcs = VersionControl.GetVersionControlServer (projectCollectionUrl) // TODO remove this & elsewhere
     let workspace = vcs.GetWorkspace(machineName, username);
     let localFile = workspace.GetLocalItemForServerItem(serverItem)
     let localText = File.ReadAllText(localFile)

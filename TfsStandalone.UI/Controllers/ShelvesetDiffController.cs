@@ -11,8 +11,7 @@ namespace TfsStandalone.UI.Controllers
         {
             var projectCollection = ConfigManager.ProjectCollection(0);
             
-            var shelvesets = ShelvesetDiff.GetShelvesets(projectCollection.Url, projectCollection.Username,
-                projectCollection.AltCredentials?.Username, projectCollection.AltCredentials?.Password);
+            var shelvesets = ShelvesetDiff.GetShelvesets(projectCollection.Url, projectCollection.Username);
 
             return Json(shelvesets);
         }
@@ -22,8 +21,7 @@ namespace TfsStandalone.UI.Controllers
             // TODO configmanager into config proj. use in F# project to avoid all of these
             var projectCollection = ConfigManager.ProjectCollection(0);
 
-            var filenames = ShelvesetDiff.GetShelvesetFilenames(projectCollection.Url, projectCollection.Username,
-                projectCollection.AltCredentials?.Username, projectCollection.AltCredentials?.Password, shelvesetName);
+            var filenames = ShelvesetDiff.GetShelvesetFilenames(projectCollection.Url, projectCollection.Username, shelvesetName);
 
             return Json(filenames);
         }
@@ -32,9 +30,7 @@ namespace TfsStandalone.UI.Controllers
         {
             var projectCollection = ConfigManager.ProjectCollection(0);
 
-            var diffLines = ShelvesetDiff.Diff(projectCollection.Url, projectCollection.Username,
-                projectCollection.AltCredentials?.Username, projectCollection.AltCredentials?.Password, shelvesetName,
-                serverItem).ToList();
+            var diffLines = ShelvesetDiff.Diff(projectCollection.Url, projectCollection.Username, shelvesetName, serverItem).ToList();
 
             return Json(diffLines);
         }

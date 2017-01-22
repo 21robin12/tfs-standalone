@@ -24,8 +24,7 @@ namespace TfsStandalone.UI.Controllers
         {
             // TODO replace with something else - just needs to be a TFS call to initiate authentication
             var projectCollection = ConfigManager.ProjectCollection(0);
-            var shelvesets = ShelvesetDiff.GetShelvesets(projectCollection.Url, projectCollection.Username,
-                projectCollection.AltCredentials?.Username, projectCollection.AltCredentials?.Password);
+            var shelvesets = ShelvesetDiff.GetShelvesets(projectCollection.Url, projectCollection.Username);
         }
 
         private void Render<T>(T model, string view)

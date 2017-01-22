@@ -40,7 +40,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="TfsAltCredentials.cs" />
     <Compile Include="TfsBranchComparison.cs" />
     <Compile Include="TfsStandaloneConfig.cs" />
     <Compile Include="TfsProject.cs" />

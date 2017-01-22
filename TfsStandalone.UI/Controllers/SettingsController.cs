@@ -16,7 +16,6 @@
                 Name = "project-colllection",
                 Url = projectCollectionUrl, 
                 Username = username,
-                AltCredentials = null, // TODO remove altCredentials completely
                 Projects = new List<TfsProject>
                 {
                     new TfsProject

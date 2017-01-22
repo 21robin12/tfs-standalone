@@ -25,9 +25,7 @@ namespace TfsStandalone.UI.Controllers
             var project = ConfigManager.Project(projectId);
             var projectCollection = ConfigManager.ProjectCollection(project);
 
-            var changes = UnmergedChanges.Get(projectCollection.Url, projectCollection.Username, fromBranch, toBranch,
-                project.IgnoredChangesets, projectCollection.AltCredentials?.Username,
-                projectCollection.AltCredentials?.Password);
+            var changes = UnmergedChanges.Get(projectCollection.Url, projectCollection.Username, fromBranch, toBranch, project.IgnoredChangesets);
 
             var mapped = changes.Select(x => new UnmergedChangeset
             {
