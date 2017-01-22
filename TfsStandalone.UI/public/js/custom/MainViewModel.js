@@ -14,7 +14,7 @@
     });
 }
 
-function MainViewModel() {
+function MainViewModel(data) {
     var self = this;
 
     self.navItems = ko.observableArray();
@@ -49,7 +49,7 @@ function MainViewModel() {
             self.shelvesetDiffNavItem
         ]);
 
-        self.settingsViewModel = new SettingsViewModel();
+        self.settingsViewModel = new SettingsViewModel(data.settings);
         self.settingsNavItem(new NavItemViewModel({
             icon: "fa-cog",
             title: "Settings",

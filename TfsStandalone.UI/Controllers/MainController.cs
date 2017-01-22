@@ -2,11 +2,14 @@
 
 namespace TfsStandalone.UI.Controllers
 {
+    using Infrastructure;
+
     public class MainController : Controller
     {
         public void Main()
         {
             var vm = new MainViewModel();
+            vm.ProjectCollection = ConfigManager.ProjectCollection(0);
             Render(vm, "Views/Main.cshtml");
         }
 
