@@ -48,7 +48,7 @@
 
         public static void SaveConfig(TfsStandaloneConfig config)
         {
-            var text = JsonConvert.SerializeObject(config);
+            var text = JsonConvert.SerializeObject(config, Formatting.Indented);
             File.WriteAllText(ConfigPath(), text);
         }
 
