@@ -29,6 +29,8 @@ function MainViewModel(data) {
     self.settingsViewModel = null;
     self.settingsNavItem = ko.observable(null);
 
+    self.template = ko.observable("authenticating-template");
+
     self.init = function () {
         self.unmergedChangesetsViewModel = new UnmergedChangesetsViewModel();
         self.unmergedChangesetsNavItem(new NavItemViewModel({
@@ -59,6 +61,8 @@ function MainViewModel(data) {
         self.lowerNavItems([
             self.settingsNavItem
         ]);
+
+        self.template("main-template");
     };
 
     self.selectNavItem = function (navItem) {
@@ -70,5 +74,11 @@ function MainViewModel(data) {
         navItem.isActive(true);
     }
 
-    self.init();
+    self.authenticate = function() {
+        ajax.execute("MainController", "Authenticate", null, function () {
+            self.init();
+        });
+    }
+
+    self.authenticate();
 }

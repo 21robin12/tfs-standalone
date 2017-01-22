@@ -10,7 +10,13 @@
     var changesetsToIgnore = project == null ? "" : string.Join(",", project.IgnoredChangesets);
 }
 
-<div id="main">
+<div id="main" data-bind="template: { name: template }"></div>
+
+<script type="text/html" id="authenticating-template">
+    <h1>Authenticating...</h1>
+</script>
+
+<script type="text/html" id="main-template">
     <div class="primary-nav">
         <div data-bind="foreach: navItems">
             <div data-bind="css: css, attr: { title: title }, click: $parent.selectNavItem">
@@ -35,7 +41,7 @@
     <div data-bind="visible: settingsNavItem().isActive(), with: settingsViewModel">
         @Include("Views/Partials/_Settings.cshtml")
     </div>
-</div>
+</script>
 
 <script>
     var settings = {
