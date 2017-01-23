@@ -34,10 +34,18 @@ namespace TfsStandalone.UI.Controllers
 
         private void ClearCachedTfsCredentials()
         {
-            var clientCredentails = new VssClientCredentialStorage();
-            var tfsUri = new Uri(ConfigManager.ProjectCollection(0).Url);
-            var federatedCredentials = clientCredentails.RetrieveToken(tfsUri, VssCredentialsType.Federated);
-            clientCredentails.RemoveToken(tfsUri, federatedCredentials);
+            try
+            {
+                var clientCredentails = new VssClientCredentialStorage();
+                var tfsUri = new Uri(ConfigManager.ProjectCollection(0).Url);
+                var federatedCredentials = clientCredentails.RetrieveToken(tfsUri, VssCredentialsType.Federated);
+                clientCredentails.RemoveToken(tfsUri, federatedCredentials);
+            }
+            catch(Exception e)
+            {
+                // can't always clear cached creds - seems to work only for VSO
+                // TODO log this somewhere
+            }
         }
     }
 }
