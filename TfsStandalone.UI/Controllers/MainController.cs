@@ -16,15 +16,16 @@ namespace TfsStandalone.UI.Controllers
             ClearCachedTfsCredentials();
 
             var vm = new MainViewModel();
-            vm.ProjectCollection = ConfigManager.ProjectCollection(0);
             Render(vm, "Views/Main.cshtml");
         }
 
-        public void Authenticate()
+        public string AuthenticateAndGetSettings()
         {
             // TODO replace with something else - just needs to be a TFS call to initiate authentication
             var projectCollection = ConfigManager.ProjectCollection(0);
             var shelvesets = ShelvesetDiff.GetShelvesets(projectCollection.Url, projectCollection.Username);
+
+            return Json(projectCollection);
         }
 
         private void Render<T>(T model, string view)

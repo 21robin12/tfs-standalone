@@ -4,6 +4,5 @@
 
     public class MainViewModel : BaseViewModel
     {
-        public TfsProjectCollection ProjectCollection { get; set; }
     }
 }

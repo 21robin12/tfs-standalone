@@ -3,11 +3,6 @@
 @inherits RazorEngine.Templating.TemplateBase<TfsStandalone.UI.Models.Pages.MainViewModel>
 @{
     Layout = "Views/Shared/_Layout.cshtml";
-    var project = Model.ProjectCollection.Projects.FirstOrDefault();
-    var workspacePath = project == null ? "" : project.WorkspacePath;
-    var developerCmdPath = project == null ? "" : project.DeveloperCmdPath;
-    var branchComparisons = project == null ? "" : string.Join(",", project.BranchComparisons.Select(x => x.From + ">" + x.To));
-    var changesetsToIgnore = project == null ? "" : string.Join(",", project.IgnoredChangesets);
 }
 
 <div id="main" data-bind="template: { name: template }"></div>
@@ -44,19 +39,6 @@
 </script>
 
 <script>
-    var settings = {
-        projectCollectionUrl: "@Model.ProjectCollection.Url",
-        username: "@Model.ProjectCollection.Username",
-        workspacePath: "@workspacePath",
-        developerCmdPath: "@developerCmdPath",
-        branchComparisons: "@branchComparisons",
-        changesetsToIgnore: "@changesetsToIgnore"
-    };
-
-    var data = {
-        settings: settings
-    };
-
-    var viewModel = new MainViewModel(data);
+    var viewModel = new MainViewModel();
     ko.applyBindings(viewModel, document.getElementById("main"));
 </script>

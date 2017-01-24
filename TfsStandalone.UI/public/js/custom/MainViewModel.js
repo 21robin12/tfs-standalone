@@ -14,7 +14,7 @@
     });
 }
 
-function MainViewModel(data) {
+function MainViewModel() {
     var self = this;
 
     self.navItems = ko.observableArray();
@@ -31,7 +31,7 @@ function MainViewModel(data) {
 
     self.template = ko.observable("authenticating-template");
 
-    self.init = function () {
+    self.init = function (settings) {
         self.unmergedChangesetsViewModel = new UnmergedChangesetsViewModel();
         self.unmergedChangesetsNavItem(new NavItemViewModel({
             icon: "fa-compress",
@@ -51,7 +51,7 @@ function MainViewModel(data) {
             self.shelvesetDiffNavItem
         ]);
 
-        self.settingsViewModel = new SettingsViewModel(data.settings);
+        self.settingsViewModel = new SettingsViewModel(settings);
         self.settingsNavItem(new NavItemViewModel({
             icon: "fa-cog",
             title: "Settings",
@@ -74,11 +74,12 @@ function MainViewModel(data) {
         navItem.isActive(true);
     }
 
-    self.authenticate = function() {
-        ajax.execute("MainController", "Authenticate", null, function () {
-            self.init();
+    self.authenticateAndGetSettings = function() {
+        ajax.execute("MainController", "AuthenticateAndGetSettings", null, function (res) {
+            var parsed = JSON.parse(res);
+            self.init(parsed);
         });
     }
 
-    self.authenticate();
+    self.authenticateAndGetSettings();
 }
