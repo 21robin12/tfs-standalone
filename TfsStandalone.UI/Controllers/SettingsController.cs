@@ -11,6 +11,10 @@
     {
         public void SaveSettings(string projectCollectionUrl, string username, string workspacePath, string developerCmdPath, string branchComparisons, string changesetsToIgnore)
         {
+            var currentProjectCollection = ConfigManager.ProjectCollection(0);
+            var currentProject = currentProjectCollection == null || currentProjectCollection.Projects == null ? null : currentProjectCollection.Projects.FirstOrDefault();
+            var projectId = currentProject == null || string.IsNullOrEmpty(currentProject.Id) ? Guid.NewGuid().ToString() : currentProject.Id;
+
             var projectCollection = new TfsProjectCollection
             {
                 Name = "project-colllection",
@@ -20,7 +24,7 @@
                 {
                     new TfsProject
                     {
-                        Id = Guid.NewGuid().ToString(),
+                        Id = projectId,
                         DeveloperCmdPath = developerCmdPath, 
                         Name = "project",
                         WorkspacePath = workspacePath,
