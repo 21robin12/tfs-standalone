@@ -11,6 +11,7 @@
     {
         public void SaveSettings(string projectCollectionUrl, string username, string workspacePath, string developerCmdPath, string branchComparisons, string changesetsToIgnore)
         {
+            // TODO better approach would be to load existing config and then set properties that we're changing
             var currentProjectCollection = ConfigManager.ProjectCollection(0);
             var currentProject = currentProjectCollection == null || currentProjectCollection.Projects == null ? null : currentProjectCollection.Projects.FirstOrDefault();
             var projectId = currentProject == null || string.IsNullOrEmpty(currentProject.Id) ? Guid.NewGuid().ToString() : currentProject.Id;
