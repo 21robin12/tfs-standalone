@@ -8,9 +8,9 @@ namespace TfsStandalone.UI.Controllers
     {
         private readonly AuthenticationService _authenticationService;
 
-        public MainController(AuthenticationService authenticationService)
+        public MainController()
         {
-            _authenticationService = authenticationService;
+            _authenticationService = new AuthenticationService();
         }
 
         public void Main()

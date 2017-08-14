@@ -14,10 +14,10 @@ namespace TfsStandalone.UI.Controllers
     {
         private readonly UnmergedChangesService _unmergedChangesService;
 
-        public UnmergedChangesetsController(UnmergedChangesService unmergedChangesService)
+        public UnmergedChangesetsController()
         {
             // TODO DI        
-            _unmergedChangesService = unmergedChangesService;
+            _unmergedChangesService = new UnmergedChangesService();
         }
 
         public string Load()

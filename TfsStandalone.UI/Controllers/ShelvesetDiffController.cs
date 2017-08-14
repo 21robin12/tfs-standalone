@@ -9,9 +9,9 @@ namespace TfsStandalone.UI.Controllers
     {
         private readonly ShelvesetDiffService _shelvesetDiffService;
 
-        public ShelvesetDiffController(ShelvesetDiffService shelvesetDiffService)
+        public ShelvesetDiffController()
         {
-            _shelvesetDiffService = shelvesetDiffService;
+            _shelvesetDiffService = new ShelvesetDiffService();
         }
 
         public string GetShelvesets()

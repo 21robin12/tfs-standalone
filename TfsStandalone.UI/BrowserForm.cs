@@ -91,7 +91,7 @@ namespace TfsStandalone.UI
                     _browser.ShowDevTools();
                 }
                 
-                new MainController(new Services.AuthenticationService()).Main();
+                new MainController().Main();
             }
         }
     }
