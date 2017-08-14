@@ -42,8 +42,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="FSharp.Core, Version=4.4.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
-    <Reference Include="Microsoft.VisualStudio.Services.Client, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
-    <Reference Include="Microsoft.VisualStudio.Services.Common, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\Newtonsoft.Json\Newtonsoft.Json.dll</HintPath>
@@ -191,9 +189,9 @@
       <Project>{d4aeadf6-25b1-4c34-b8a5-815a244574a1}</Project>
       <Name>TfsStandalone.Config</Name>
     </ProjectReference>
-    <ProjectReference Include="..\TfsStandalone.Service\TfsStandalone.Service.fsproj">
-      <Project>{37372865-165d-4dc3-ab64-f754b1f29756}</Project>
-      <Name>TfsStandalone.Service</Name>
+    <ProjectReference Include="..\TfsStandalone.Services\TfsStandalone.Services.csproj">
+      <Project>{C37D686B-8BD3-42A6-A472-9215955F9AD8}</Project>
+      <Name>TfsStandalone.Services</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

@@ -3,16 +3,23 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using TfsStandalone.Service;
 using TfsStandalone.UI.Models.Blocks;
 
 namespace TfsStandalone.UI.Controllers
 {
     using Infrastructure;
+    using Services;
 
     public class UnmergedChangesetsController : Controller
     {
+        private readonly UnmergedChangesService _unmergedChangesService;
+
+        public UnmergedChangesetsController(UnmergedChangesService unmergedChangesService)
+        {
+            // TODO DI        
+            _unmergedChangesService = unmergedChangesService;
+        }
+
         public string Load()
         {
             var projectCollection = ConfigManager.ProjectCollection(0);
@@ -25,7 +32,7 @@ namespace TfsStandalone.UI.Controllers
             var project = ConfigManager.Project(projectId);
             var projectCollection = ConfigManager.ProjectCollection(project);
 
-            var changes = UnmergedChanges.Get(projectCollection.Url, projectCollection.Username, fromBranch, toBranch, project.IgnoredChangesets);
+            var changes = _unmergedChangesService.GetUnmergedChanges(projectCollection.Url, projectCollection.Username, fromBranch, toBranch, project.IgnoredChangesets.ToList());
 
             var mapped = changes.Select(x => new UnmergedChangeset
             {

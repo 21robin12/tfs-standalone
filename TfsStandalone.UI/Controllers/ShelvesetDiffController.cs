@@ -1,17 +1,24 @@
 ﻿using System.Linq;
-using TfsStandalone.Service;
 
 namespace TfsStandalone.UI.Controllers
 {
     using Infrastructure;
+    using Services;
 
     public class ShelvesetDiffController : Controller
     {
+        private readonly ShelvesetDiffService _shelvesetDiffService;
+
+        public ShelvesetDiffController(ShelvesetDiffService shelvesetDiffService)
+        {
+            _shelvesetDiffService = shelvesetDiffService;
+        }
+
         public string GetShelvesets()
         {
             var projectCollection = ConfigManager.ProjectCollection(0);
             
-            var shelvesets = ShelvesetDiff.GetShelvesets(projectCollection.Url, projectCollection.Username);
+            var shelvesets = _shelvesetDiffService.GetShelvesets(projectCollection.Url, projectCollection.Username);
 
             return Json(shelvesets);
         }
@@ -21,7 +28,7 @@ namespace TfsStandalone.UI.Controllers
             // TODO configmanager into config proj. use in F# project to avoid all of these
             var projectCollection = ConfigManager.ProjectCollection(0);
 
-            var filenames = ShelvesetDiff.GetShelvesetFilenames(projectCollection.Url, projectCollection.Username, shelvesetName);
+            var filenames = _shelvesetDiffService.GetShelvesetFilenames(projectCollection.Url, projectCollection.Username, shelvesetName);
 
             return Json(filenames);
         }
@@ -30,7 +37,7 @@ namespace TfsStandalone.UI.Controllers
         {
             var projectCollection = ConfigManager.ProjectCollection(0);
 
-            var diffLines = ShelvesetDiff.Diff(projectCollection.Url, projectCollection.Username, shelvesetName, serverItem).ToList();
+            var diffLines = _shelvesetDiffService.Diff(projectCollection.Url, projectCollection.Username, shelvesetName, serverItem).ToList();
 
             return Json(diffLines);
         }

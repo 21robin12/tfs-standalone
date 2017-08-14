@@ -1,4 +1,4 @@
-﻿module TfsStandalone.Service.DiffEngine
+﻿module TfsStandalone.DiffEngine.Diff
 
 // from http://devdirective.com/post/91/creating-a-reusable-though-simple-diff-implementation-in-csharp-part-1
 // based on https://en.wikipedia.org/wiki/Longest_common_substring_problem
@@ -50,7 +50,7 @@ let rec private diff (array1: 'a array) firstStart firstEnd (array2: 'a array) s
                     yield { diffType = DiffSectionType.Insert; items = Array.sub array2 secondStart (secondEnd - secondStart) |> List.ofArray }
     ]           
 
-let Diff text1 text2 =
+let Calculate text1 text2 =
     let sectionToLines (diff: DiffSection<'a>) = 
         let lines = List.fold (fun acc (item:string) -> ({ diffType = diff.diffType; text = item.Replace("\t", "    ") })::acc) [] diff.items // TODO restrict to string elsewhere?
         lines |> List.rev // TODO foldback to avoid this?
@@ -61,4 +61,4 @@ let Diff text1 text2 =
     let diffs = diff lines1 0 lines1.Length lines2 0 lines2.Length
     
     let result = List.fold (fun (acc: DiffLine list) item -> List.concat(Seq.ofList([acc; sectionToLines(item)]))) [] diffs
-    result
+    Seq.ofList result
